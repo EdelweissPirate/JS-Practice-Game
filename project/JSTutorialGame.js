@@ -185,7 +185,7 @@ function getMCSymbolPrototype(symbol, nominalBounds, frameBounds) {
 
 	// Layer_1
 	this.shape = new cjs.Shape();
-	this.shape.graphics.f().s("#000000").ss(1,1,1).p("Egq9gZYMBV7AAAMAAAAyxMhV7AAAg");
+	this.shape.graphics.f().s("rgba(0,0,0,0.008)").ss(1,1,1).p("Egq9gZYMBV7AAAMAAAAyxMhV7AAAg");
 
 	this.timeline.addTween(cjs.Tween.get(this.shape).wait(1));
 
@@ -198,18 +198,19 @@ function getMCSymbolPrototype(symbol, nominalBounds, frameBounds) {
 	this.initialize(mode,startPosition,loop,{});
 
 	// label
-	this.label = new cjs.Text("", "25px 'Tahoma'", "#CCCCA3");
-	this.label.name = "label";
-	this.label.lineHeight = 32;
-	this.label.lineWidth = 457;
-	this.label.parent = this;
-	this.label.setTransform(2,2);
+	this.tBox = new cjs.Text("test", "35px 'Tahoma'", "#CCCCA3");
+	this.tBox.name = "tBox";
+	this.tBox.textAlign = "center";
+	this.tBox.lineHeight = 44;
+	this.tBox.lineWidth = 457;
+	this.tBox.parent = this;
+	this.tBox.setTransform(230.25,2);
 
-	this.timeline.addTween(cjs.Tween.get(this.label).wait(1));
+	this.timeline.addTween(cjs.Tween.get(this.tBox).wait(1));
 
 	this._renderFirstFrame();
 
-}).prototype = getMCSymbolPrototype(lib.messageLabel, new cjs.Rectangle(0,0,460.5,34.2), null);
+}).prototype = getMCSymbolPrototype(lib.messageLabel, new cjs.Rectangle(0,0,460.5,110.1), null);
 
 
 (lib.holder_empty = function(mode,startPosition,loop) {
@@ -380,37 +381,6 @@ p.nominalBounds = new cjs.Rectangle(-19.9,-25.4,39.9,50.8);
 }).prototype = getMCSymbolPrototype(lib.digNumComplete, new cjs.Rectangle(-56.1,-98.7,112.30000000000001,197.5), null);
 
 
-(lib.page_question = function(mode,startPosition,loop) {
-	this.initialize(mode,startPosition,loop,{});
-
-	// question
-	this.question = new cjs.Text("placeholder text", "12px 'Tahoma'", "#CCCCA3");
-	this.question.name = "question";
-	this.question.lineHeight = 17;
-	this.question.lineWidth = 484;
-	this.question.parent = this;
-	this.question.setTransform(35,50);
-
-	this.timeline.addTween(cjs.Tween.get(this.question).wait(1));
-
-	// bg
-	this.bg = new lib.bg_question();
-	this.bg.name = "bg";
-	this.bg.setTransform(271.9,158.95,1,1,0,0,0,-3.1,-5.1);
-
-	this.timeline.addTween(cjs.Tween.get(this.bg).wait(1));
-
-	// padding
-	this.instance = new lib.page_padding();
-	this.instance.setTransform(275,162.5);
-
-	this.timeline.addTween(cjs.Tween.get(this.instance).wait(1));
-
-	this._renderFirstFrame();
-
-}).prototype = getMCSymbolPrototype(lib.page_question, new cjs.Rectangle(-0.5,-0.5,551,326), null);
-
-
 (lib.button = function(mode,startPosition,loop) {
 	this.initialize(mode,startPosition,loop,{});
 
@@ -471,6 +441,32 @@ p.nominalBounds = new cjs.Rectangle(-85,-30,178,68);
 	this._renderFirstFrame();
 
 }).prototype = getMCSymbolPrototype(lib.banner, new cjs.Rectangle(-278,-40.5,564,88), null);
+
+
+(lib.answer = function(mode,startPosition,loop) {
+	this.initialize(mode,startPosition,loop,{});
+
+	// tBox
+	this.tBox = new cjs.Text("answer placeholder", "12px 'Tahoma'", "#CCCCA3");
+	this.tBox.name = "tBox";
+	this.tBox.lineHeight = 17;
+	this.tBox.lineWidth = 113;
+	this.tBox.parent = this;
+	this.tBox.setTransform(-57.7,-3.75);
+
+	this.timeline.addTween(cjs.Tween.get(this.tBox).wait(1));
+
+	// selector
+	this.selector = new lib.button();
+	this.selector.name = "selector";
+	this.selector.setTransform(-112.05,0,0.56,0.56,0,0,0,0.1,0);
+	new cjs.ButtonHelper(this.selector, 0, 1, 2, false, new lib.button(), 3);
+
+	this.timeline.addTween(cjs.Tween.get(this.selector).wait(1));
+
+	this._renderFirstFrame();
+
+}).prototype = getMCSymbolPrototype(lib.answer, new cjs.Rectangle(-161,-18.1,218.7,44), null);
 
 
 (lib.timer = function(mode,startPosition,loop) {
@@ -618,6 +614,56 @@ p.nominalBounds = new cjs.Rectangle(-85,-30,178,68);
 }).prototype = getMCSymbolPrototype(lib.timer, new cjs.Rectangle(-39.3,-11.6,55.3,23.2), null);
 
 
+(lib.page_question = function(mode,startPosition,loop) {
+	this.initialize(mode,startPosition,loop,{});
+
+	// question
+	this.question = new cjs.Text("placeholder text", "12px 'Tahoma'", "#CCCCA3");
+	this.question.name = "question";
+	this.question.lineHeight = 17;
+	this.question.lineWidth = 484;
+	this.question.parent = this;
+	this.question.setTransform(35,50);
+
+	this.timeline.addTween(cjs.Tween.get(this.question).wait(1));
+
+	// answers
+	this.answer_D = new lib.answer();
+	this.answer_D.name = "answer_D";
+	this.answer_D.setTransform(457.25,246.8,1,1,0,0,0,-0.6,0);
+
+	this.answer_C = new lib.answer();
+	this.answer_C.name = "answer_C";
+	this.answer_C.setTransform(457.25,196.8,1,1,0,0,0,-0.6,0);
+
+	this.answer_B = new lib.answer();
+	this.answer_B.name = "answer_B";
+	this.answer_B.setTransform(194.75,246.8,1,1,0,0,0,-0.6,0);
+
+	this.answer_A = new lib.answer();
+	this.answer_A.name = "answer_A";
+	this.answer_A.setTransform(194.75,196.8,1,1,0,0,0,-0.6,0);
+
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.answer_A},{t:this.answer_B},{t:this.answer_C},{t:this.answer_D}]}).wait(1));
+
+	// bg
+	this.bg = new lib.bg_question();
+	this.bg.name = "bg";
+	this.bg.setTransform(271.9,158.95,1,1,0,0,0,-3.1,-5.1);
+
+	this.timeline.addTween(cjs.Tween.get(this.bg).wait(1));
+
+	// padding
+	this.instance = new lib.page_padding();
+	this.instance.setTransform(275,162.5);
+
+	this.timeline.addTween(cjs.Tween.get(this.instance).wait(1));
+
+	this._renderFirstFrame();
+
+}).prototype = getMCSymbolPrototype(lib.page_question, new cjs.Rectangle(-0.5,-0.5,551,326), null);
+
+
 (lib.page_mode = function(mode,startPosition,loop) {
 	this.initialize(mode,startPosition,loop,{});
 
@@ -654,6 +700,49 @@ p.nominalBounds = new cjs.Rectangle(-85,-30,178,68);
 	this._renderFirstFrame();
 
 }).prototype = getMCSymbolPrototype(lib.page_mode, new cjs.Rectangle(-0.5,-0.5,551,326), null);
+
+
+(lib.page_messageBoard = function(mode,startPosition,loop) {
+	this.initialize(mode,startPosition,loop,{});
+
+	// label
+	this.label = new lib.messageLabel();
+	this.label.name = "label";
+	this.label.setTransform(275.2,62.1,1,1,0,0,0,230.2,17.1);
+
+	this.timeline.addTween(cjs.Tween.get(this.label).wait(1));
+
+	// button_one
+	this.button_one = new lib.button();
+	this.button_one.name = "button_one";
+	this.button_one.setTransform(150,190);
+	new cjs.ButtonHelper(this.button_one, 0, 1, 2, false, new lib.button(), 3);
+
+	this.timeline.addTween(cjs.Tween.get(this.button_one).wait(1));
+
+	// button_two
+	this.button_two = new lib.button();
+	this.button_two.name = "button_two";
+	this.button_two.setTransform(400,190);
+	new cjs.ButtonHelper(this.button_two, 0, 1, 2, false, new lib.button(), 3);
+
+	this.timeline.addTween(cjs.Tween.get(this.button_two).wait(1));
+
+	// bg
+	this.instance = new lib.bg_question();
+	this.instance.setTransform(271.9,157.4,1,1,0,0,0,-3.1,-5.1);
+
+	this.timeline.addTween(cjs.Tween.get(this.instance).wait(1));
+
+	// padding
+	this.instance_1 = new lib.page_padding();
+	this.instance_1.setTransform(275,162.5);
+
+	this.timeline.addTween(cjs.Tween.get(this.instance_1).wait(1));
+
+	this._renderFirstFrame();
+
+}).prototype = getMCSymbolPrototype(lib.page_messageBoard, new cjs.Rectangle(-0.5,-0.5,551,326), null);
 
 
 (lib.page_home = function(mode,startPosition,loop) {

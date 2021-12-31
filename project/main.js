@@ -9,6 +9,10 @@ var props = {
     currentMode: null,
     currentScore: 0,
     gameStarted: false,
+    countdown: 3,
+    questionList: [],
+    questionCount: 5,
+    currentQuestionNum: 1,
 };
 
 function onEnterFrame() {
@@ -24,5 +28,7 @@ document.ready(function(){
     pages.init();
     controls.init();
     timer.init();
+    message.init();
+    question.init();
 
 });

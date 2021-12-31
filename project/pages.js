@@ -9,6 +9,8 @@ const pages = {
         pages.addPage('mode', 'menu');
         pages.init_mode();
 
+        pages.addPage('messageBoard', 'message');
+
         pages.addPage('question', 'question');
 
         pages.setPage('home');
@@ -27,6 +29,9 @@ const pages = {
                 break;
             case 'mode':
                 newPage = new lib.page_mode();
+                break;
+            case 'messageBoard':
+                newPage = new lib.page_messageBoard();
                 break;
             case 'question':
                 newPage = new lib.page_question();
@@ -67,6 +72,10 @@ const pages = {
                 });
                 break;
 
+            case 'message':
+                message.hideBoard(pages.showPage(newPage, newType));
+                break;
+
             case 'question':
                 //TODO - 
                 props.pages[thisPage].visible = false;
@@ -90,8 +99,12 @@ const pages = {
                 });
                 break;
 
+            case 'message':
+                message.showBoard();
+                break;
+
             case 'question':
-                //TODO - 
+                question.show();
                 break;
         
             default:
@@ -147,6 +160,7 @@ const pages = {
 
             button.on('mousedown', function(){
                 props.currentDifficulty = button.label.text.toLowerCase();
+                questionList.generate();
                 pages.setPage('mode');
             });
         });
@@ -171,24 +185,23 @@ const pages = {
 
         props.pages.mode.buttons[0].on('mousedown', function(){
             props.currentMode = this.label.text.toLowerCase();
-            game.start();
+            game.confirmStart();
         });
 
         props.pages.mode.buttons[1].on('mousedown', function(){
             props.currentMode = this.label.text.toLowerCase();
-            timer.enable();
-            game.start();
+            game.confirmStart();
         });
 
         props.pages.mode.buttons[2].on('mousedown', function(){
             props.currentMode = this.label.text.toLowerCase();
-            // timer.enable();
-            game.start();
+            game.confirmStart();
         });
     },
 
     init_question: () => {
         controls.init_obj(props.pages.question.bg, props.pages.question.bg.x, props.pages.question.bg.y);
+        props.pages.question.bg.y += 300;
         //TODO - 
     },
 
