@@ -77,7 +77,6 @@ const pages = {
                 break;
 
             case 'question':
-                //TODO - 
                 props.pages[thisPage].visible = false;
                 pages.showPage(newPage, newType)
                 break;
@@ -197,12 +196,6 @@ const pages = {
             props.currentMode = this.label.text.toLowerCase();
             game.confirmStart();
         });
-    },
-
-    init_question: () => {
-        controls.init_obj(props.pages.question.bg, props.pages.question.bg.x, props.pages.question.bg.y);
-        props.pages.question.bg.y += 300;
-        //TODO - 
-    },
+    }
 
 };

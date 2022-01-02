@@ -7,12 +7,26 @@ var props = {
     currentPage: null,
     currentDifficulty: null,
     currentMode: null,
-    currentScore: 0,
     gameStarted: false,
+    gameEnded: false,
     countdown: 3,
     questionList: [],
+    questionDots: [],
     questionCount: 5,
-    currentQuestionNum: 1,
+    currentQuestionNum: 0,
+    
+    correctAnswers: [],
+    currentScore: 0,
+
+    highScores: {
+        normal: [],
+        timed: [],
+        survival: [],
+    },
+
+    sessionTime: 0,
+    remainingLives: 3,
+    maxLives: 3,
 };
 
 function onEnterFrame() {

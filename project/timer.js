@@ -27,6 +27,7 @@ const timer = {
     },
 
     enable: () => {
+        props.sessionTime = 0;
         _.timer.visible = true;
         check_tween(_.timer.tween_alpha);
         _.timer.tween_alpha = Tween(_.timer, 'alpha', 'none', 1, 1)
@@ -34,7 +35,7 @@ const timer = {
     disable: () => {
         _.timer.visible = false;
         check_tween(_.timer.tween_alpha);
-        _.timer.alpha = 0;
+        _.timer.tween_alpha = Tween(_.timer, 'alpha', 'none', 0, 1)
         timer.reset();
     },
 
@@ -62,7 +63,27 @@ const timer = {
                 timer.min_val++;
             };
 
-            console.log('TIME: ', timer.min_val, ':', timer.sec_val, ':', timer.msec_val);
+            let mins;
+            let secs;
+            let msecs;
+
+            if(timer.min_val < 10){
+                mins = '0' + timer.min_val;
+            } else {
+                mins = timer.min_val;
+            };
+            if(timer.sec_val < 10){
+                secs = '0' + timer.sec_val;
+            } else {
+                secs = timer.sec_val;
+            };
+            if(timer.msec_val < 10){
+                msecs = '0' + timer.msec_val;
+            } else {
+                msecs = timer.msec_val;
+            };
+
+            props.sessionTime = String(mins + ':' + secs + ':' + msecs);
         };
     },
 

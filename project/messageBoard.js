@@ -50,6 +50,7 @@ const message = {
     },
 
     startGameConfig: () => {
+        props.pages.messageBoard.label.alpha = 1;
         message.setMessage('Are you ready to begin?');
 
         passSelection = (onOff) => {
@@ -68,6 +69,10 @@ const message = {
             };
         };
 
+        props.pages.messageBoard.button_one.visible = true;
+        props.pages.messageBoard.button_two.visible = true;
+        props.pages.messageBoard.button_one.x = props.pages.messageBoard.button_one.homeX;
+        props.pages.messageBoard.button_two.x = props.pages.messageBoard.button_two.homeX;
         props.pages.messageBoard.button_one.label.text = 'YES';
         props.pages.messageBoard.button_two.label.text = 'NO';
 
@@ -78,6 +83,18 @@ const message = {
         props.pages.messageBoard.button_two.on('mousedown', function(){
             passSelection(false);
         });
+    },
+
+    showScoreConfig: () => {
+        if(props.currentMode == 'timed'){
+            message.setMessage('SCORE: ' + props.currentScore + '\n' + props.sessionTime);
+        } else {
+            message.setMessage('SCORE: ' + props.currentScore);
+        };
+
+        props.pages.messageBoard.button_two.x -= 120;
+        props.pages.messageBoard.button_two.label.text = 'END';
+        props.pages.messageBoard.button_one.visible = false;
     },
 
     doCountdown: () => {
@@ -96,7 +113,6 @@ const message = {
             } else if(props.countdown == 1) {
                 props.countdown = 'GO!';
                 message.doCountdown();
-            } else {
                 message.hideBoard(game.start());
             };
         });
